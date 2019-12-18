@@ -13,11 +13,10 @@ const styles = {
   }
 };
 
-function DragableColorBox(props) {
-  const { color, classes } = props;
+function DragableColorBox({ color, name, classes }) {
   return (
     <div style={{ backgroundColor: color }} className={classes.root}>
-      {color}
+      {name}
     </div>
   );
 }
