@@ -140,6 +140,10 @@ function NewPaletteForm({ savePalette, history, palettes }) {
     history.push('/');
   };
 
+  const handleDelete = colorName => {
+    setColors(colors.filter(color => color.name !== colorName));
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -239,9 +243,10 @@ function NewPaletteForm({ savePalette, history, palettes }) {
           colors.map(color => {
             return (
               <DragableColorBox
-                key={color.color}
+                key={color.name}
                 color={color.color}
                 name={color.name}
+                handleDelete={handleDelete}
               />
             );
           })}
