@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
+import DragableColorBox from './DragableColorBox';
 
 import { ChromePicker } from 'react-color';
 
@@ -56,6 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
+    height: 'calc(100vh - 64px)',
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -164,11 +166,10 @@ function NewPaletteForm() {
       >
         <br />
         <br />
-        <ul>
-          {colors.map(color => {
-            return <li style={{ backgroundColor: color }}>{color}</li>;
-          })}
-        </ul>
+
+        {colors.map(color => {
+          return <DragableColorBox key={color} color={color} />;
+        })}
       </main>
     </div>
   );
