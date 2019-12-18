@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function NewPaletteForm() {
+function NewPaletteForm({ savePalette, history }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [selectedColor, setSelectedColor] = React.useState('#1CA848');
@@ -119,11 +119,23 @@ function NewPaletteForm() {
     setNewColorName(evt.target.value);
   };
 
+  const handleSavePalette = () => {
+    let newName = 'New Test Palette';
+    const newPalette = {
+      paletteName: newName,
+      id: newName.toLowerCase().replace(/ /g, '-'),
+      colors
+    };
+    savePalette(newPalette);
+    history.push('/');
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position='fixed'
+        color='default'
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open
         })}
@@ -141,6 +153,13 @@ function NewPaletteForm() {
           <Typography variant='h6' noWrap>
             Persistent drawer
           </Typography>
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={handleSavePalette}
+          >
+            Save Palette
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -163,8 +182,8 @@ function NewPaletteForm() {
           <Button variant='contained' color='secondary'>
             Clear Palette
           </Button>
-          <Button variant='contained' color='secondary'>
-            Clear Palette
+          <Button variant='contained' color='primary'>
+            Random Color
           </Button>
         </div>
 
