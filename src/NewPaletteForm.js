@@ -11,28 +11,11 @@ import DraggableColorList from './DraggableColorList';
 import { arrayMove } from 'react-sortable-hoc';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
-const drawerWidth = 400;
+import { drawerWidth } from './constants/settings';
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex'
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
   },
   hide: {
     display: 'none'
@@ -123,7 +106,6 @@ function NewPaletteForm({ savePalette, history, palettes, maxColors = 20 }) {
     <div className={classes.root}>
       <PaletteFormNav
         open={open}
-        classes={classes}
         palettes={palettes}
         handleSavePalette={handleSavePalette}
         handleDrawerOpen={handleDrawerOpen}
