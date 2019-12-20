@@ -1,4 +1,5 @@
 import chroma from 'chroma-js';
+import { down } from './sizes';
 
 const styles = {
   ColorBox: {
@@ -11,6 +12,18 @@ const styles = {
     marginBottom: '-3.5px',
     '&:hover button': {
       opacity: 1
+    },
+    [down('lg')]: {
+      width: '25%',
+      height: props => (props.showingFullPalette ? '20%' : '50%')
+    },
+    [down('md')]: {
+      width: '50%',
+      height: props => (props.showingFullPalette ? '10%' : '50%')
+    },
+    [down('xs')]: {
+      width: '100%',
+      height: props => (props.showingFullPalette ? '5%' : '10%')
     }
   },
   copyText: {
