@@ -19,6 +19,10 @@ function App() {
     setPalettes([...palettes, newPalette]);
   }
 
+  function deletePalette(id) {
+    setPalettes([...palettes.filter(palette => palette.id !== id)]);
+  }
+
   React.useEffect(() => {
     const syncPalettes = () => {
       window.localStorage.setItem('palettes', JSON.stringify(palettes));
@@ -55,7 +59,11 @@ function App() {
         exact
         path='/'
         render={routeProps => (
-          <PaletteList palettes={palettes} {...routeProps} />
+          <PaletteList
+            palettes={palettes}
+            {...routeProps}
+            deletePalette={deletePalette}
+          />
         )}
       />
       <Route
