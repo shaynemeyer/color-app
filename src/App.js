@@ -8,14 +8,23 @@ import seedColors from './seedColors';
 import { generatePalette } from './colorHelpers';
 
 function App() {
-  const [palettes, setPalettes] = React.useState(seedColors);
+  const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
+  const [palettes, setPalettes] = React.useState(savedPalettes || seedColors);
+
   function findPalette(id) {
     return palettes.find(palette => palette.id === id);
   }
 
-  const savePalette = newPalette => {
+  function savePalette(newPalette) {
     setPalettes([...palettes, newPalette]);
-  };
+  }
+
+  React.useEffect(() => {
+    const syncPalettes = () => {
+      window.localStorage.setItem('palettes', JSON.stringify(palettes));
+    };
+    syncPalettes();
+  }, [palettes]);
 
   return (
     <Switch>
