@@ -15,11 +15,11 @@ const styles = {
     },
     [down('lg')]: {
       width: '25%',
-      height: props => (props.showingFullPalette ? '20%' : '50%')
+      height: props => (props.showingFullPalette ? '20%' : '33.3333%')
     },
     [down('md')]: {
       width: '50%',
-      height: props => (props.showingFullPalette ? '10%' : '50%')
+      height: props => (props.showingFullPalette ? '10%' : '20%')
     },
     [down('xs')]: {
       width: '100%',
@@ -50,7 +50,7 @@ const styles = {
   },
   copyButton: {
     color: props =>
-      chroma(props.background).luminance() >= 0.7 ? 'black' : 'white',
+      chroma(props.background).luminance() >= 0.7 ? 'rgba(0,0,0,0.6)' : 'white',
     width: '100px',
     height: '30px',
     position: 'absolute',
@@ -62,7 +62,7 @@ const styles = {
     textAlign: 'center',
     outline: 'none',
     background: 'rgba(255, 255, 255, 0.3)',
-    fontSize: '2rem',
+    fontSize: '1rem',
     lineHeight: '30px',
     textTransform: 'uppercase',
     border: 'none',
@@ -85,7 +85,8 @@ const styles = {
     zIndex: '0',
     width: '100%',
     height: '100%',
-    transition: 'transform 0.6s ease-in-out'
+    transition: 'transform 0.6s ease-in-out',
+    transform: 'scale(0.1)'
   },
   showOverlay: {
     opacity: '1',
@@ -115,7 +116,10 @@ const styles = {
       textAlign: 'center',
       marginBottom: '0',
       padding: '1rem',
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      [down('xs')]: {
+        fontSize: '5rem'
+      }
     },
     '& p': {
       fontSize: '2rem',

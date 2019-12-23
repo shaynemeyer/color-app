@@ -1,3 +1,5 @@
+import { down } from './sizes';
+
 const styles = {
   Palette: {
     height: '100vh',
@@ -30,11 +32,23 @@ const styles = {
       textAlign: 'center',
       outline: 'none',
       background: 'rgba(255, 255, 255, 0.3)',
-      fontSize: '2rem',
+      fontSize: '1rem',
       lineHeight: '30px',
       textTransform: 'uppercase',
       border: 'none',
       textDecoration: 'none'
+    },
+    [down('lg')]: {
+      width: '25%',
+      height: '33.3333%'
+    },
+    [down('md')]: {
+      width: '50%',
+      height: '20%'
+    },
+    [down('xs')]: {
+      width: '100%',
+      height: '10%'
     }
   }
 };
