@@ -41,6 +41,7 @@ function PaletteMetaForm({ palettes, handleSavePalette, hideForm }) {
       emoji: emoji.native
     };
     handleSavePalette(newPalette);
+    setOpen('');
   };
 
   return (
