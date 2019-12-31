@@ -65,19 +65,7 @@ function App() {
                   </Page>
                 )}
               />
-              <Route
-                exact
-                path='/'
-                render={routeProps => (
-                  <Page>
-                    <PaletteList
-                      palettes={palettes}
-                      {...routeProps}
-                      deletePalette={deletePalette}
-                    />
-                  </Page>
-                )}
-              />
+
               <Route
                 exact
                 path='/palette/:id'
@@ -87,6 +75,17 @@ function App() {
                       palette={generatePalette(
                         findPalette(routeProps.match.params.id)
                       )}
+                    />
+                  </Page>
+                )}
+              />
+              <Route
+                render={routeProps => (
+                  <Page>
+                    <PaletteList
+                      palettes={palettes}
+                      {...routeProps}
+                      deletePalette={deletePalette}
                     />
                   </Page>
                 )}
