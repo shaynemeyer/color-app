@@ -11,12 +11,13 @@ import { arrayMove } from 'react-sortable-hoc';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import { useStyles } from './styles/NewPaletteFormStyles';
+import seedColors from './seedColors';
 
 function NewPaletteForm({ savePalette, history, palettes, maxColors = 20 }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
-  const [colors, setColors] = React.useState(palettes[0].colors);
+  const [colors, setColors] = React.useState(seedColors[0].colors);
 
   const paletteIsFull = colors.length >= maxColors;
 
