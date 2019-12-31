@@ -54,6 +54,7 @@ function NewPaletteForm({ savePalette, history, palettes, maxColors = 20 }) {
     while (isDuplicateColor) {
       rand = ~~(Math.random() * allColors.length);
       randomColor = allColors[rand];
+      // eslint-disable-next-line no-loop-func
       isDuplicateColor = colors.some(color => color.name === randomColor.name);
     }
     setColors([...colors, randomColor]);
